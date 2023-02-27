@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 	<!-- GRIPPER PARAM -->
-	<arg name="robotiq_gripper" 			default="true"/>
+	<arg name="robotiq_gripper" 			default="false"/>
 
 	<!-- COLLISION WALLS PARAM -->
 	<arg name="collision_walls" 			default="false"/>
@@ -41,7 +41,7 @@
 	<arg name="nav_test" 					default="false"/>
 
 	<!-- GRASP GENERATION -->
-	<arg name="generate_grasps" 			default="true"/>
+	<arg name="generate_grasps" 			default="false"/>
 
 	<!--======================== GAZEBO + NAV STACK ==================================-->
 	<include file="$(find icclab_summit_xl)/launch/sim/irlab_summit_xl_gazebo.launch">
