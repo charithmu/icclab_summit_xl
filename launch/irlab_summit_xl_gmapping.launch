@@ -6,20 +6,26 @@
 
         <!-- GAZEBO -->
         <arg name="ros_planar_move_plugin"              default="true"/> <!-- disables gazebo ros_control plugin -->
-        <arg name="gazebo_world"                        default="$(find icclab_summit_xl)/worlds/summit_xl_office.world"/>
+        <!-- <arg name="gazebo_world"                        default="$(find icclab_summit_xl)/worlds/summit_xl_office.world"/> -->
+        <!-- <arg name="gazebo_world"                        default="$(find aws_robomaker_hospital_world )/worlds/hospital.world"/> -->
+        <arg name="gazebo_world"                        default="$(find aws_robomaker_small_house_world)/worlds/small_house.world"/>
         <arg name="gazebo_gui"                          default="true"/>
 
         <!-- NAV STACK PARAMS -->
         <arg name="teleop"                              default="false"/>
         <arg name="launch_rviz_nav"                     default="true"/>
         <arg name="launch_robot_localization"           default="false"/>
+
         <arg name="omni"                                default="true"/>
         <arg name="launch_move_base"                    default="true"/>
         <arg name="launch_gmapping"                     default="true"/>
         <arg name="launch_amcl"                         default="false"/>
         <arg name="launch_map_server"                   default="false"/>
-        <arg if="$(arg sim)" name="map_file"            default="willow_garage/willow_garage.yaml"/>
-        <arg unless="$(arg sim)" name="map_file"        default="icclab/icclab_latest_map.yaml"/>
+
+        <arg name="map_file"                            default="maps/expo_tests/small_house.yaml"/>
+        <!-- <arg if="$(arg sim)" name="map_file"            default="willow_garage/willow_garage.yaml"/>
+        <arg unless="$(arg sim)" name="map_file"        default="icclab/icclab_latest_map.yaml"/> -->
+
         <arg name="publish_voxel_map"                   default="false"/>
         <arg name="slam"                                default="true"/>
 
