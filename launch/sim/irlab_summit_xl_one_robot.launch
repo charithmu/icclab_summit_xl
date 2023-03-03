@@ -10,15 +10,20 @@
 	<arg name="x_init_pose" 				default="0"/>
 	<arg name="y_init_pose" 				default="0"/>
 	<arg name="z_init_pose" 				default="0"/>
+
 	<arg name="xacro_robot" 				default="irlab_summit_xls_std.urdf.xacro"/>
+
 	<arg name="launch_robot_localization" 	default="false"/>
 	<arg name="launch_amcl_and_mapserver" 	default="false"/>
 	<arg name="launch_gmapping" 			default="false"/>
 	<arg name="launch_move_base" 			default="false"/>
+
 	<arg name="map_file" 					default="empty/empty.yaml"/>
+
 	<arg name="robot_localization_mode" 	default="odom"/> <!-- odom, complete (including gps)-->
 	<arg name="ros_planar_move_plugin" 		default="false"/>
 	<arg name="nav_test" 					default="false"/>
+	
 	<arg name="slam" 						default="false"/>
 	<arg name="omni" 						default="true"/>
 
@@ -58,7 +63,6 @@
 		<!-- only use if you aren´t using a localization algorithm like amcl -->
 		<!--node if="$(arg fake_map_transform)" pkg="tf" type="static_transform_publisher" name="static_map_broadcaster" args="0 0 0 0 0 0 map $(arg namespace)odom 100" /-->
 
-
 		<!--================================== NAV STACK ==================================-->
 		<!-- convert front camera depth image to LaserScan for input to laserscan merger -->
 		<include if="$(eval launch_amcl_and_mapserver or launch_gmapping)" file="$(find icclab_summit_xl)/launch/depthimage_to_laserscan.launch"/>
@@ -86,6 +90,8 @@
 			<arg name="prefix" value="$(arg prefix)"/>
 			<arg name="map_file" value="$(arg map_file)"/>
 		</include>
+
+		<!-- amcl base-->
 		<include if="$(arg launch_amcl_and_mapserver)" file="$(find icclab_summit_xl)/launch/sim/amcl.launch">
 			<arg name="prefix" 									value="$(arg prefix)"/>
 			<arg if="$(arg omni)" 		name="odom_model_type" 	value="omni"/>
